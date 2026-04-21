@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { useColorMode, useColorModeValue } from "../../components/ui/color-mode";
+import { ClientOnly, IconButton, Skeleton } from "@chakra-ui/react";
+import { FaMoon, FaSun } from "react-icons/fa6";
 
-const ThemeToggleButton: React.FC = () => {
+const ThemeToggleButtonInner: React.FC = () => {
   const { toggleColorMode } = useColorMode();
 
   return (
@@ -17,13 +18,21 @@ const ThemeToggleButton: React.FC = () => {
       >
         <IconButton
           aria-label="Toggle theme"
-          colorScheme={useColorModeValue("purple", "orange")}
-          icon={useColorModeValue(<MoonIcon />, <SunIcon />)}
+          colorPalette={useColorModeValue("purple", "orange")}
           onClick={toggleColorMode}
-        ></IconButton>
+          variant="outline"
+        >
+          {useColorModeValue(<FaMoon />, <FaSun />)}
+        </IconButton>
       </motion.div>
     </AnimatePresence>
   );
 };
+
+const ThemeToggleButton: React.FC = () => (
+  <ClientOnly fallback={<Skeleton boxSize="8" display="inline-block" />}>
+    <ThemeToggleButtonInner />
+  </ClientOnly>
+);
 
 export default ThemeToggleButton;

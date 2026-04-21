@@ -2,12 +2,12 @@ import Body from "../app/components/layouts/Body";
 import {
   Box,
   Container,
-  Divider,
   Heading,
   HStack,
   Link,
   Text,
   VStack,
+  Separator,
 } from "@chakra-ui/react";
 
 const About = () => {
@@ -15,38 +15,48 @@ const About = () => {
     <Body title="About">
       <Container maxW={"xl"} mt={28}>
         <Box my={4}>
-          <Heading as="h1">About</Heading>
-          <Heading as="h2" size="md">
-            My name is Sebastianus Sembara,
-          </Heading>
+          <Heading size="4xl">About</Heading>
+          <Heading size="2xl">My name is Sebastianus Sembara,</Heading>
         </Box>
         <Text textAlign="justify">
           because Sebastianus Sembara is too long, you can call me Bara. Born in
           Magelang, Indonesia. and now live in <strong>Bali</strong>, Indonesia.
           A bachelor&apos;s degree graduate from Technology Information on
           Information System at{" "}
-          <Link href="https://www.dinamika.ac.id/" target={"_blank"}>
+          <Link
+            href="https://www.dinamika.ac.id/"
+            target={"_blank"}
+            color="linkColor"
+          >
             Universitas Dinamika
           </Link>
           {""}. With a greatest passion on web technologies like{" "}
-          <Link href="hhttps://laravel.com/" target={"_blank"}>
+          <Link
+            href="hhttps://laravel.com/"
+            target={"_blank"}
+            color="linkColor"
+          >
             @laravelphp
           </Link>
           {", "}
-          <Link href="https://nodejs.org/en/" target={"_blank"}>
+          <Link
+            href="https://nodejs.org/en/"
+            target={"_blank"}
+            color="linkColor"
+          >
             @nodejs
           </Link>
           {", "}
-          <Link href="https://reactjs.org/" target={"_blank"}>
+          <Link href="https://reactjs.org/" target={"_blank"} color="linkColor">
             @reactjs
           </Link>{" "}
           frameworks. I have a big dream to become the best software engineer in
           the universe.
         </Text>
-        <Divider my={6} />
+        <Separator my={6} />
         <Box my={4}>
-          <Heading as="h1">Skills</Heading>
-          <HStack mt={4} spacing={8} align={"flex-start"}>
+          <Heading size="4xl">Skills</Heading>
+          <HStack mt={4} gap={8} align={"flex-start"}>
             <VStack align={"flex-start"}>
               <Text>HTML5</Text>
               <Text>CSS3</Text>

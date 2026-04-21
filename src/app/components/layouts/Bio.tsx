@@ -4,6 +4,13 @@ import styled from "@emotion/styled";
 export const BioSection = styled(Box)`
   padding-left: 3.4em;
   text-indent: -3.4em;
+  line-height: 1.8;
+
+  a {
+    display: inline;
+    vertical-align: baseline;
+    white-space: normal;
+  }
 `;
 
 export const BioYear = styled.span`

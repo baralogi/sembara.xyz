@@ -12,7 +12,7 @@ function MyApp(props: AppProps) {
   const { Component, pageProps, router } = props;
 
   return (
-    <Chakra cookies={pageProps.cookies}>
+    <Chakra>
       <Fonts />
       <Main router={router}>
         <AnimatePresence

@@ -7,21 +7,22 @@ const Footer = () => {
       <Link
         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         target={"_blank"}
+        color="linkColor"
       >
         CC BY-NC-SA 4.0
       </Link>
       {". "}
       Made using{" "}
-      <Link href="https://nextjs.org/" target={"_blank"}>
+      <Link href="https://nextjs.org/" target={"_blank"} color="linkColor">
         Next.js
       </Link>{" "}
       and{" "}
-      <Link href="https://chakra-ui.com/" target={"_blank"}>
+      <Link href="https://chakra-ui.com/" target={"_blank"} color="linkColor">
         Chakra UI
       </Link>
       {". "}
       Hosted on{" "}
-      <Link href="https://vercel.com/" target={"_blank"}>
+      <Link href="https://vercel.com/" target={"_blank"} color="linkColor">
         Vercel
       </Link>
       {". "}

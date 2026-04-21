@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "@emotion/styled";
-import { Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
+
+const LogoLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+`;
 
 const LogoBox = styled.span`
   font-weight: bold;
@@ -17,18 +22,44 @@ const LogoBox = styled.span`
   &:hover img {
     transform: rotate(20deg);
   }
+  .logo-dark-theme {
+    display: none;
+  }
+  .dark & .logo-light-theme {
+    display: none;
+  }
+  .dark & .logo-dark-theme {
+    display: block;
+  }
 `;
 
-const Logo = () => {
-  const letterImage = `/images/logo${useColorModeValue("-dark", "")}.png`;
+const LogoImage = () => (
+  <Box position="relative" boxSize="20px">
+    <Image
+      className="logo-light-theme"
+      src="/images/logo-dark.png"
+      width={20}
+      height={20}
+      alt="logo"
+    />
+    <Image
+      className="logo-dark-theme"
+      src="/images/logo.png"
+      width={20}
+      height={20}
+      alt="logo"
+    />
+  </Box>
+);
 
+const Logo = () => {
   return (
-    <Link href="/" scroll={false}>
+    <LogoLink href="/" scroll={false}>
       <LogoBox>
-        <Image src={letterImage} width={20} height={20} alt="logo" />
+        <LogoImage />
         &nbsp;
         <Text
-          color={useColorModeValue("gray.800", "whiteAlpha.900")}
+          color="logoText"
           fontFamily='M PLUS Rounded 1c", sans-serif'
           fontWeight="bold"
           ml={3}
@@ -36,7 +67,7 @@ const Logo = () => {
           Sebastianus Sembara
         </Text>
       </LogoBox>
-    </Link>
+    </LogoLink>
   );
 };
 

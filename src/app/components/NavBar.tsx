@@ -4,19 +4,15 @@ import NextLink from "next/link";
 import ThemeToggleButton from "./ThemeToggleButton";
 import {
   Box,
-  Container,
   Flex,
   Heading,
   IconButton,
   Link,
   Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
   Stack,
-  useColorModeValue,
+  Portal,
 } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { FaBars } from "react-icons/fa6";
 
 interface LinkItemProps {
   href: string;
@@ -37,18 +33,19 @@ const LinkItem: React.FC<LinkItemProps> = ({
   ...props
 }) => {
   const active = path === href;
-  const inactiveColor = useColorModeValue("gray200", "whiteAlpha.900");
   return (
     <Link
-      as={NextLink}
-      href={href}
       p={2}
       bg={active ? "grassTeal" : undefined}
-      color={active ? "#202023" : inactiveColor}
-      target={_target}
+      color={active ? "#202023" : "navLinkInactive"}
+      textDecoration="none"
+      _hover={{ textDecoration: "none" }}
       {...props}
+      asChild
     >
-      {children}
+      <NextLink href={href} target={_target}>
+        {children}
+      </NextLink>
     </Link>
   );
 };
@@ -61,64 +58,67 @@ const Navbar: React.FC<NavbarProps> = (props) => {
       position="fixed"
       as="nav"
       w="100%"
-      bg={useColorModeValue("#ffffff40", "#20202380")}
+      bg="navbarBg"
       css={{ backdropFilter: "blur(10px)" }}
       zIndex={1}
       {...props}
     >
-      <Container
-        display="flex"
-        p={2}
-        maxW="container.md"
-        flexWrap={"wrap"}
-        alignContent="center"
-        justifyContent={"space-between"}
+      <Box
+        maxW={{ base: "full", md: "720px", lg: "720px" }}
+        mx="auto"
+        px={{ base: 4, md: 2 }}
+        py={2}
       >
-        <Flex align="center" mr={5}>
-          <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-            <Logo />
-          </Heading>
-        </Flex>
+        <Flex align="center" justify="space-between" gap={{ base: 2, md: 8 }}>
+          <Flex align="center" minW={0} flexShrink={0}>
+            <Heading as="h1" size="lg" letterSpacing={"tighter"}>
+              <Logo />
+            </Heading>
+          </Flex>
 
-        <Stack
-          direction={{ base: "column", md: "row" }}
-          display={{ base: "none", md: "flex" }}
-          width={{ base: "full", md: "auto" }}
-          alignItems="center"
-          flexGrow={1}
-          mt={{ base: 4, md: 0 }}
-        >
-          <LinkItem href="/abouts" path={path}>
-            About
-          </LinkItem>
-          <LinkItem href="/daily" path={path}>
-            Daily
-          </LinkItem>
-        </Stack>
+          <Stack
+            direction="row"
+            display={{ base: "none", md: "flex" }}
+            alignItems="center"
+            ml={2}
+            mr="auto"
+            gap={2}
+          >
+            <LinkItem href="/abouts" path={path}>
+              About
+            </LinkItem>
+            <LinkItem href="/daily" path={path}>
+              Daily
+            </LinkItem>
+          </Stack>
 
-        <Box flex={1} textAlign="right">
-          <ThemeToggleButton />
+          <Box textAlign="right" flexShrink={0}>
+            <ThemeToggleButton />
 
-          <Box ml={2} display={{ base: "inline-block", md: "none" }}>
-            <Menu isLazy id="navbar-menu">
-              <MenuButton
-                as={IconButton}
-                icon={<HamburgerIcon />}
-                variant="outline"
-                aria-label="Options"
-              />
-              <MenuList>
-                <NextLink href="/abouts" passHref>
-                  <MenuItem as={Link}>About</MenuItem>
-                </NextLink>
-                <NextLink href="/daily" passHref>
-                  <MenuItem as={Link}>Daily</MenuItem>
-                </NextLink>
-              </MenuList>
-            </Menu>
+            <Box ml={2} display={{ base: "inline-block", md: "none" }}>
+              <Menu.Root lazyMount unmountOnExit id="navbar-menu">
+                <Menu.Trigger asChild>
+                  <IconButton variant="outline" aria-label="Options">
+                    <FaBars />
+                  </IconButton>
+                </Menu.Trigger>
+                <Portal>
+                  <Menu.Positioner>
+                    <Menu.Content>
+                      <Menu.Item value="abouts" asChild>
+                        <NextLink href="/abouts">About</NextLink>
+                      </Menu.Item>
+                      <Menu.Item value="daily" asChild>
+                        <NextLink href="/daily">Daily</NextLink>
+                      </Menu.Item>
+                    </Menu.Content>
+                  </Menu.Positioner>
+                </Portal>
+              </Menu.Root>
+            </Box>
           </Box>
-        </Box>
-      </Container>
+        </Flex>
+      </Box>
     </Box>
   );
 };

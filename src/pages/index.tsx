@@ -4,24 +4,21 @@ import Paragraph from "../app/components/Paragraph";
 import React from "react";
 import Section from "../app/components/layouts/Section";
 import { BioSection, BioYear } from "../app/components/layouts/Bio";
-import { ChevronRightIcon } from "@chakra-ui/icons";
 import {
   IoLogoGithub,
   IoLogoInstagram,
   IoLogoTwitter,
   IoMail,
 } from "react-icons/io5";
+import { FaChevronRight } from "react-icons/fa6";
 import {
   Box,
   Button,
   Container,
   Heading,
-  Icon,
   Image,
   Link,
   List,
-  ListItem,
-  useColorModeValue,
 } from "@chakra-ui/react";
 
 const Home = () => {
@@ -34,13 +31,13 @@ const Home = () => {
           mb={6}
           p={3}
           textAlign="center"
-          bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
+          bg="welcomeBg"
         >
           Henlow, My Fren ! 😍
         </Box>
         <Box display={{ md: "flex" }}>
           <Box flexGrow={1}>
-            <Heading as="h2" variant="page-title">
+            <Heading size="4xl" mb={2}>
               Sebastianus Sembara
             </Heading>
             <p>Software Engineer</p>
@@ -64,35 +61,54 @@ const Home = () => {
           </Box>
         </Box>
         <Section>
-          <Heading as="h3" variant="section-title">
+          <Heading
+            as="h3"
+            textDecoration="underline"
+            fontSize={20}
+            textUnderlineOffset={6}
+            textDecorationColor="#525252"
+            textDecorationThickness={4}
+            mt={3}
+            mb={4}
+          >
             Work
           </Heading>
           <Paragraph>
             Hello there! I am a software engineer based in Bali, Indonesia. With
             a greatest passion on web technologies like{" "}
-            <Link href="https://laravel.com/" target={"_blank"}>
+            <Link href="https://laravel.com/" target={"_blank"} color="linkColor">
               Laravel
             </Link>
             {", "}
-            <Link href="https://laravel.com/" target={"_blank"}>
+            <Link href="https://laravel.com/" target={"_blank"} color="linkColor">
               Node
             </Link>
             {", and "}
-            <Link href="https://laravel.com/" target={"_blank"}>
+            <Link href="https://laravel.com/" target={"_blank"} color="linkColor">
               React
             </Link>{" "}
             frameworks. Check my work here!
           </Paragraph>
           <Box textAlign="center" my={4}>
             <NextLink href="/works" scroll={false}>
-              <Button rightIcon={<ChevronRightIcon />} colorScheme="teal">
+              <Button colorPalette="teal" gap={2}>
                 My portfolio
+                <FaChevronRight />
               </Button>
             </NextLink>
           </Box>
         </Section>
         <Section>
-          <Heading as="h3" variant="section-title">
+          <Heading
+            as="h3"
+            textDecoration="underline"
+            fontSize={20}
+            textUnderlineOffset={6}
+            textDecorationColor="#525252"
+            textDecorationThickness={4}
+            mt={3}
+            mb={4}
+          >
             Bio
           </Heading>
           <BioSection>
@@ -103,14 +119,22 @@ const Home = () => {
             <BioYear>2022</BioYear>
             Completed the Bachelor’s Degree in Technology Information on
             Information System at{" "}
-            <Link href={"https://www.dinamika.ac.id/"} target={"_blank"}>
+            <Link
+              href={"https://www.dinamika.ac.id/"}
+              target={"_blank"}
+              color="linkColor"
+            >
               Universitas Dinamika
             </Link>
           </BioSection>
           <BioSection>
             <BioYear>2022</BioYear>
             Worked at{" "}
-            <Link href={"https://www.gocement.com/"} target={"_blank"}>
+            <Link
+              href={"https://www.gocement.com/"}
+              target={"_blank"}
+              color="linkColor"
+            >
               Gocement
             </Link>{" "}
             as Back-End Developer
@@ -118,17 +142,34 @@ const Home = () => {
           <BioSection>
             <BioYear>2024</BioYear>
             Moved to Bali, and start worked at{" "}
-            <Link href={"https://www.bonofactum.com/"} target={"_blank"}>
+            <Link
+              href={"https://www.bonofactum.com/"}
+              target={"_blank"}
+              color="linkColor"
+            >
               Bonofactum
             </Link>{" "}
             as PHP Developer, part of the German jewelry group{" "}
-            <Link href={"https://www.julie-grace.de/"} target={"_blank"}>
+            <Link
+              href={"https://www.julie-grace.de/"}
+              target={"_blank"}
+              color="linkColor"
+            >
               JULIE & GRACE
             </Link>
           </BioSection>
         </Section>
         <Section>
-          <Heading as="h3" variant="section-title">
+          <Heading
+            as="h3"
+            textDecoration="underline"
+            fontSize={20}
+            textUnderlineOffset={6}
+            textDecorationColor="#525252"
+            textDecorationThickness={4}
+            mt={3}
+            mb={4}
+          >
             I ♥
           </Heading>
           <Paragraph>
@@ -136,55 +177,52 @@ const Home = () => {
           </Paragraph>
         </Section>
         <Section>
-          <Heading as="h3" variant="section-title">
+          <Heading
+            as="h3"
+            textDecoration="underline"
+            fontSize={20}
+            textUnderlineOffset={6}
+            textDecorationColor="#525252"
+            textDecorationThickness={4}
+            mt={3}
+            mb={4}
+          >
             Touch me
           </Heading>
-          <List>
-            <ListItem>
+          <List.Root>
+            <List.Item>
               <Link href="mailto:sembara9090@gmail.com" target="_blank">
-                <Button
-                  variant="ghost"
-                  colorScheme="teal"
-                  leftIcon={<Icon as={IoMail} />}
-                >
+                <Button variant="ghost" colorPalette="teal" gap={2}>
+                  <IoMail />
                   sembara9090@gmail.com
                 </Button>
               </Link>
-            </ListItem>
-            <ListItem>
+            </List.Item>
+            <List.Item>
               <Link href="https://github.com/baralogi" target="_blank">
-                <Button
-                  variant="ghost"
-                  colorScheme="teal"
-                  leftIcon={<Icon as={IoLogoGithub} />}
-                >
+                <Button variant="ghost" colorPalette="teal" gap={2}>
+                  <IoLogoGithub />
                   @baralogi
                 </Button>
               </Link>
-            </ListItem>
-            <ListItem>
+            </List.Item>
+            <List.Item>
               <Link href="https://twitter.com/baralogi" target="_blank">
-                <Button
-                  variant="ghost"
-                  colorScheme="teal"
-                  leftIcon={<Icon as={IoLogoTwitter} />}
-                >
+                <Button variant="ghost" colorPalette="teal" gap={2}>
+                  <IoLogoTwitter />
                   @baralogi
                 </Button>
               </Link>
-            </ListItem>
-            <ListItem>
+            </List.Item>
+            <List.Item>
               <Link href="https://instagram.com/baralogi" target="_blank">
-                <Button
-                  variant="ghost"
-                  colorScheme="teal"
-                  leftIcon={<Icon as={IoLogoInstagram} />}
-                >
+                <Button variant="ghost" colorPalette="teal" gap={2}>
+                  <IoLogoInstagram />
                   @baralogi
                 </Button>
               </Link>
-            </ListItem>
-          </List>
+            </List.Item>
+          </List.Root>
         </Section>
       </Container>
     </Body>

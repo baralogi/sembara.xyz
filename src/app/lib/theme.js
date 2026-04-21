@@ -1,48 +1,44 @@
-import { extendTheme } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
+import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 
-const styles = {
-  global: (props) => ({
+const config = defineConfig({
+  globalCss: {
     body: {
-      bg: mode("#f0e7db", "#202023")(props),
+      bg: "pageBg",
     },
-  }),
-};
-
-const components = {
-  Heading: {
-    variants: {
-      "section-title": {
-        textDecoration: "underline",
-        fontSize: 20,
-        textUnderlineOffset: 6,
-        textDecorationColor: "#525252",
-        textDecorationThickness: 4,
-        marginTop: 3,
-        marginBottom: 4,
+    a: {
+      color: "linkColor",
+      textUnderlineOffset: "3px",
+    },
+  },
+  theme: {
+    tokens: {
+      colors: {
+        grassTeal: { value: "#88ccca" },
+      },
+      fonts: {
+        heading: { value: "'M PLUS Rounded 1c'" },
+      },
+    },
+    semanticTokens: {
+      colors: {
+        pageBg: { value: { base: "#f0e7db", _dark: "#202023" } },
+        linkColor: { value: { base: "#3d7aed", _dark: "#ff63c3" } },
+        navbarBg: { value: { base: "#ffffff40", _dark: "#FFFFFF14" } },
+        navLinkInactive: {
+          value: { base: "gray.200", _dark: "whiteAlpha.900" },
+        },
+        welcomeBg: {
+          value: {
+            base: "#FFFFFF40",
+            _dark: "#FFFFFF14",
+          },
+        },
+        logoText: { value: { base: "gray.800", _dark: "whiteAlpha.900" } },
       },
     },
   },
-  Link: {
-    baseStyle: (props) => ({
-      color: mode("#3d7aed", "#ff63c3")(props),
-      textUnderlineOffset: 3,
-    }),
-  },
-};
+});
 
-const fonts = {
-  heading: "'M PLUS Rounded 1c'",
-};
+const system = createSystem(defaultConfig, config);
 
-const colors = {
-  grassTeal: "#88ccca",
-};
-
-const config = {
-  initialColorMode: "dark",
-  useSystemColorMode: true,
-};
-
-const theme = extendTheme({ config, styles, components, fonts, colors });
-export default theme;
+export default system;
