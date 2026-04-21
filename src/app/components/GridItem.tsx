@@ -6,7 +6,7 @@ import { Global } from "@emotion/react";
 
 interface GridItemProps {
   children?: ReactNode;
-  href: any;
+  href: string;
   title: string;
   thumbnail: string;
 }

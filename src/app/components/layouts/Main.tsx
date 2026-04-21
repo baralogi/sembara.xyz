@@ -1,12 +1,13 @@
 import Footer from "../Footer";
 import Head from "next/head";
 import Navbar from "../NavBar";
+import type { NextRouter } from "next/router";
 import React, { ReactNode } from "react";
 import { Box, Container } from "@chakra-ui/react";
 
 interface MainProps {
   children?: ReactNode;
-  router: any;
+  router: NextRouter;
 }
 
 const Main: React.FC<MainProps> = ({ children, router }) => {

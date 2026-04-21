@@ -14,28 +14,32 @@ const variants = {
   exit: { opacity: 0, x: -0, y: 20 },
 };
 
-const Body: React.FC<LayoutProps> = ({ children, title }) => (
-  <motion.article
-    initial="hidden"
-    animate="enter"
-    exit="exit"
-    variants={variants}
-    transition={{ duration: 0.4, type: "easeInOut" }}
-    style={{ position: "relative" }}
-  >
-    <>
-      {title && (
-        <Head>
-          <title>{title} - Sebastianus Sembara</title>
-          <meta name="twitter:title" content={title} />
-          <meta property="og:title" content={title} />
-        </Head>
-      )}
-      {children}
+const Body: React.FC<LayoutProps> = ({ children, title }) => {
+  const pageTitle = `${title} - Sebastianus Sembara`;
 
-      <GridItemStyle />
-    </>
-  </motion.article>
-);
+  return (
+    <motion.article
+      initial="hidden"
+      animate="enter"
+      exit="exit"
+      variants={variants}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      style={{ position: "relative" }}
+    >
+      <>
+        {title && (
+          <Head>
+            <title>{pageTitle}</title>
+            <meta name="twitter:title" content={pageTitle} />
+            <meta property="og:title" content={pageTitle} />
+          </Head>
+        )}
+        {children}
+
+        <GridItemStyle />
+      </>
+    </motion.article>
+  );
+};
 
 export default Body;
