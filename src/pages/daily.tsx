@@ -2,9 +2,9 @@ import Body from "../app/components/layouts/Body";
 import UnderConstruction from "../app/components/UnderConstruction";
 import { Container } from "@chakra-ui/react";
 
-const Speak = () => {
+const Daily = () => {
   return (
-    <Body title="Speak">
+    <Body title="Daily">
       <Container maxW={"xl"}>
         <UnderConstruction />
       </Container>
@@ -12,4 +12,4 @@ const Speak = () => {
   );
 };
 
-export default Speak;
+export default Daily;

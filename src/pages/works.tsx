@@ -1,5 +1,5 @@
-import Body from "../components/layouts/Body";
-import UnderConstruction from "../components/UnderConstruction";
+import Body from "../app/components/layouts/Body";
+import UnderConstruction from "../app/components/UnderConstruction";
 import { Container } from "@chakra-ui/react";
 
 const Work = () => {

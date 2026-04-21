@@ -1,8 +1,6 @@
-import Body from "../components/layouts/Body";
-import NextLink from "next/link";
+import Body from "../app/components/layouts/Body";
 import {
   Box,
-  Button,
   Container,
   Divider,
   Heading,

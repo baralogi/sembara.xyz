@@ -1,9 +1,9 @@
-import Body from "../components/layouts/Body";
+import Body from "../app/components/layouts/Body";
 import NextLink from "next/link";
-import Paragraph from "../components/Paragraph";
+import Paragraph from "../app/components/Paragraph";
 import React from "react";
-import Section from "../components/layouts/Section";
-import { BioSection, BioYear } from "../components/layouts/Bio";
+import Section from "../app/components/layouts/Section";
+import { BioSection, BioYear } from "../app/components/layouts/Bio";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import {
   IoLogoGithub,

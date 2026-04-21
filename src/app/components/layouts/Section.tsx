@@ -1,11 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  Box,
-  BoxProps,
-  chakra,
-  shouldForwardProp,
-  styled,
-} from "@chakra-ui/react";
+import { chakra, shouldForwardProp } from "@chakra-ui/react";
 import React, { ReactNode } from "react";
 
 const MotionBox = chakra(motion.div, {
@@ -15,7 +9,7 @@ const MotionBox = chakra(motion.div, {
 });
 
 interface SectionProps {
-  childern?: ReactNode;
+  children?: ReactNode;
 }
 
 const Section: React.FC<SectionProps> = ({ children }) => (

@@ -1,16 +1,18 @@
 import Image from "next/image";
 import NextLink from "next/link";
-import React from "react";
+import React, { ReactNode } from "react";
 import { Box, LinkBox, LinkOverlay, Text } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
 
 interface GridItemProps {
-  href: any;
+  children?: ReactNode;
+  href: string;
   title: string;
   thumbnail: string;
 }
 
 interface WorkGridItem {
+  children?: ReactNode;
   id: number;
   title: string;
   thumbnail: string;

@@ -6,7 +6,6 @@ import {
   Box,
   Container,
   Flex,
-  forwardRef,
   Heading,
   IconButton,
   Link,
@@ -20,13 +19,14 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 interface LinkItemProps {
-  href: any;
-  path: any;
+  href: string;
+  path: string;
   _target?: string;
+  children: React.ReactNode;
 }
 
 interface NavbarProps {
-  path: any;
+  path: string;
 }
 
 const LinkItem: React.FC<LinkItemProps> = ({
@@ -39,17 +39,17 @@ const LinkItem: React.FC<LinkItemProps> = ({
   const active = path === href;
   const inactiveColor = useColorModeValue("gray200", "whiteAlpha.900");
   return (
-    <NextLink href={href} passHref scroll={false}>
-      <Link
-        p={2}
-        bg={active ? "grassTeal" : undefined}
-        color={active ? "#202023" : inactiveColor}
-        target={_target}
-        {...props}
-      >
-        {children}
-      </Link>
-    </NextLink>
+    <Link
+      as={NextLink}
+      href={href}
+      p={2}
+      bg={active ? "grassTeal" : undefined}
+      color={active ? "#202023" : inactiveColor}
+      target={_target}
+      {...props}
+    >
+      {children}
+    </Link>
   );
 };
 
@@ -91,11 +91,8 @@ const Navbar: React.FC<NavbarProps> = (props) => {
           <LinkItem href="/abouts" path={path}>
             About
           </LinkItem>
-          <LinkItem href="/works" path={path}>
-            Works
-          </LinkItem>
-          <LinkItem href="/speaks" path={path}>
-            Speaks
+          <LinkItem href="/daily" path={path}>
+            Daily
           </LinkItem>
         </Stack>
 
@@ -114,11 +111,8 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 <NextLink href="/abouts" passHref>
                   <MenuItem as={Link}>About</MenuItem>
                 </NextLink>
-                <NextLink href="/works" passHref>
-                  <MenuItem as={Link}>Works</MenuItem>
-                </NextLink>
-                <NextLink href="/speaks" passHref>
-                  <MenuItem as={Link}>Speaks</MenuItem>
+                <NextLink href="/daily" passHref>
+                  <MenuItem as={Link}>Daily</MenuItem>
                 </NextLink>
               </MenuList>
             </Menu>
